@@ -6,7 +6,7 @@ import axios from "axios"
 function App() {
   
   function Send() {
-    const data = {name : "Patrick"}
+    const data = {name : "Michael"}
     axios.post("http://127.0.0.1:5000/namestore", data)
   }
   return (
@@ -22,7 +22,7 @@ function App() {
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={Send}>
-          count is {count}
+          count is 1
         </button>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
