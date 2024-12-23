@@ -2,10 +2,13 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-
+import axios from axios
 function App() {
-  const [count, setCount] = useState(0)
-
+  
+  function Send() {
+    const data = {name : "Patrick"}
+    axios.post("http://127.0.0.1:5000/namestore", data)
+  }
   return (
     <>
       <div>
@@ -18,7 +21,7 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
+        <button onClick={Send}>
           count is {count}
         </button>
         <p>
