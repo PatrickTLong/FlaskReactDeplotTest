@@ -7,7 +7,7 @@ function App() {
   
   function Send() {
     const data = {name : "Punkybunky"}
-    axios.post("https://flaskreactdeploytest.onrender.com/namestore", data)
+    axios.post("https://flaskreactdeplottest.onrender.com/namestore", data)
   }
   return (
     <>
