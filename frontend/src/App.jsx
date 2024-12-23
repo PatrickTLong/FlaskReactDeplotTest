@@ -6,8 +6,8 @@ import axios from "axios"
 function App() {
   
   function Send() {
-    const data = {name : "Michael"}
-    axios.post("http://127.0.0.1:5000/namestore", data)
+    const data = {name : "Punkybunky"}
+    axios.post("https://flaskreactdeploytest.onrender.com/namestore", data)
   }
   return (
     <>
