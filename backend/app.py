@@ -24,9 +24,10 @@ class Name(db.Model):
 @app.route("/")
 def start():
     return jsonify("Works")
-@app.route("/namestore")
+@app.route("/namestore", methods=["POST"])
 def namestore():
-    data = request.get_json
+    data = request.get_json()
     store = Name(name=data["name"])
     db.session.add(store)
     db.session.commit()
+    return jsonify("success")
