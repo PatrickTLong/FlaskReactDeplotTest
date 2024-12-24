@@ -28,7 +28,7 @@ def start():
 @app.route("/namestore", methods=["POST"])
 def namestore():
     data = request.get_json()
-    if data["name"] != "":
+    if data["name"] != "" or data["name"] != "pussy":
         store = Name(name=data["name"])
         db.session.add(store)
         db.session.commit()
