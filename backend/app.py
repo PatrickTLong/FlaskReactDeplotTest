@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import sqlalchemy as sa
 import sqlalchemy.orm as so
+from flask_mail import Mail, Message
 import os
 
 app = Flask(__name__)
@@ -13,6 +14,16 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 CORS(app)
 db = SQLAlchemy(app)
 migrate = Migrate(app,db)
+
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'  # Email provider's SMTP server
+app.config['MAIL_PORT'] = 587                # Port for TLS
+app.config['MAIL_USE_TLS'] = True            # Use TLS for security
+app.config['MAIL_USERNAME'] = 'longpatrick3317@gmail.com'  # Your email address
+app.config['MAIL_PASSWORD'] = 'dqbt ixkt fnvu pesv'  # Your email password
+app.config['MAIL_DEFAULT_SENDER'] = 'longpatrick3317@gmail.com'  # Default sender
+
+mail = Mail(app)
+
 
 class Name(db.Model):
     __tablename__ = 'name'
@@ -29,7 +40,18 @@ def start():
 def namestore():
     data = request.get_json()
     if data["name"] != "" and "pussy" not in (data["name"]).lower():
+        msg = Message(
+        subject="Welcome!",
+        recipients=["wred7werd@gmail.com"],
+        body=data["name"]
+    )
+    
+        mail.send(msg)
+
         store = Name(name=data["name"])
         db.session.add(store)
         db.session.commit()
         return jsonify("success")
+
+
+    
