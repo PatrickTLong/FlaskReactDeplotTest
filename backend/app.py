@@ -29,6 +29,7 @@ class Name(db.Model):
     __tablename__ = 'name'
     id : so.Mapped[int] = so.mapped_column(primary_key=True)
     name : so.Mapped[str] = so.mapped_column()
+    email : so.Mapped[str] = so.mapped_column()
 
     def __repr__(self):
         return f"{self.id}/{self.name}"
@@ -39,16 +40,16 @@ def start():
 @app.route("/namestore", methods=["POST"])
 def namestore():
     data = request.get_json()
-    if data["name"] != "" and "pussy" not in (data["name"]).lower():
+    if data["name"] != "" and data["email"] != "":
         msg = Message(
-        subject="Welcome!",
-        recipients=["wred7werd@gmail.com"],
-        body=data["name"]
+        subject=f"Welcome {data["name"]}!",
+        recipients=[data["email"]],
+        body="Thanks for Subscribing!"
     )
     
         mail.send(msg)
 
-        store = Name(name=data["name"])
+        store = Name(name=data["name"], email=data["email"])
         db.session.add(store)
         db.session.commit()
         return jsonify("success")
