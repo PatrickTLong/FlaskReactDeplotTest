@@ -32,6 +32,7 @@ function App() {
           <p>Email Here</p>
           <input onChange={ValChangeE} value={value.email} type='text'>
           </input>
+          <br></br>
         <button onClick={Send}>
           Submit
         </button>
