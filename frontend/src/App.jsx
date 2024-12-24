@@ -10,9 +10,9 @@ function App() {
     setvalue(prev => ({...prev, name : e.target.value }))
   }
 
-  function Send() {
-    const data = value
-    axios.post("https://flaskreactdeplottest.onrender.comN/namestore", data)
+  function Send(e) {
+    e.preventDefault()
+    axios.post("https://flaskreactdeplottest.onrender.com/namestore", value)
   }
 
 
