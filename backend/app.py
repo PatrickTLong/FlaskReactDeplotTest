@@ -42,7 +42,7 @@ def namestore():
     data = request.get_json()
     if data["name"] != "" and data["email"] != "":
         msg = Message(
-        subject=f"Welcome {data["name"]}!",
+        subject=f"Welcome {data['name']}!",
         recipients=[data["email"]],
         body="Thanks for Subscribing!"
     )
