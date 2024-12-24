@@ -19,11 +19,6 @@ function App() {
 
   return (
     <>
-      <div>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
       <h1>Hey Mom and Michael!</h1>
       <div className="card">
         <form>
@@ -38,9 +33,7 @@ function App() {
           Submit Here ^ Testing to see if i get it ^-^
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
     </>
   )
 }
