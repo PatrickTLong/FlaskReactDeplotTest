@@ -7,7 +7,7 @@ import sqlalchemy.orm as so
 from flask_mail import Mail, Message
 from dotenv import load_dotenv
 import os
-
+load_dotenv()
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
@@ -24,9 +24,10 @@ app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
 app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
 app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_DEFAULT_SENDER')
 
+
 mail = Mail(app)
 
-load_dotenv()
+
 
 class Name(db.Model):
     __tablename__ = 'name'
