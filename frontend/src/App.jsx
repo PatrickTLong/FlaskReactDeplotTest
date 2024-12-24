@@ -13,6 +13,7 @@ function App() {
   function Send(e) {
     e.preventDefault()
     axios.post("https://flaskreactdeplottest.onrender.com/namestore", value)
+    setvalue(prev => ({...prev, name : "" }))
   }
 
 
