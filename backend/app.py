@@ -15,6 +15,7 @@ db = SQLAlchemy(app)
 migrate = Migrate(app,db)
 
 class Name(db.Model):
+    __tablename__ = 'name'
     id : so.Mapped[int] = so.mapped_column(primary_key=True)
     name : so.Mapped[str] = so.mapped_column(unique=True)
 
