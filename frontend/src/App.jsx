@@ -4,11 +4,18 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import axios from "axios"
 function App() {
-  
-  function Send() {
-    const data = {name : "Punkybunky"}
-    axios.post("https://flaskreactdeplottest.onrender.com/namestore", data)
+  const [value, setvalue] = useState({name : ""})
+
+  function ValChange(e) {
+    setvalue(prev => ({...prev, name : e.target.value }))
   }
+
+  function Send() {
+    const data = value
+    axios.post("https://flaskreactdeplottest.onrender.comN/namestore", data)
+  }
+
+
   return (
     <>
       <div>
@@ -21,9 +28,14 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
+        <form>
+          <input onChange={ValChange} value={value.name} type='text'>
+          </input>
         <button onClick={Send}>
-          count is 1
+          Submit
         </button>
+        </form>
+        
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
