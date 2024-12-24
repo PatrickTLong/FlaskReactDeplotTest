@@ -5,6 +5,7 @@ from flask_migrate import Migrate
 import sqlalchemy as sa
 import sqlalchemy.orm as so
 from flask_mail import Mail, Message
+from dotenv import load_dotenv
 import os
 
 app = Flask(__name__)
@@ -25,6 +26,7 @@ app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_DEFAULT_SENDER')
 
 mail = Mail(app)
 
+load_dotenv()
 
 class Name(db.Model):
     __tablename__ = 'name'
