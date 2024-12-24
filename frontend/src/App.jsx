@@ -4,16 +4,20 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import axios from "axios"
 function App() {
-  const [value, setvalue] = useState({name : ""})
+  const [value, setvalue] = useState({name : "", email : ""})
 
   function ValChange(e) {
     setvalue(prev => ({...prev, name : e.target.value }))
+  }
+  function ValChangeE(e) {
+    setvalue(prev => ({...prev, email : e.target.value }))
   }
 
   function Send(e) {
     e.preventDefault()
     axios.post("https://flaskreactdeplottest.onrender.com/namestore", value)
     setvalue(prev => ({...prev, name : "" }))
+    setvalue(prev => ({...prev, email : "" }))
   }
 
 
@@ -22,7 +26,11 @@ function App() {
       <h1>Hey Mom and Michael!</h1>
       <div className="card">
         <form>
+          <p>Your Name</p>
           <input onChange={ValChange} value={value.name} type='text'>
+          </input>
+          <p>Email Here</p>
+          <input onChange={ValChangeE} value={value.email} type='text'>
           </input>
         <button onClick={Send}>
           Submit
